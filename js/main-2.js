@@ -12,7 +12,7 @@ console.log(userObj.fullName());
 
 
 function defUpperStr(str) {
-    return (str || 'another text').toUpperCase();
+    return (str || 'DEFAULT TEXT').toUpperCase();
   }
   console.log(defUpperStr('My text'));
   console.log(defUpperStr());
@@ -65,4 +65,57 @@ function weekFn(cond) {
   console.log(weekFn(100));
 
 //   №6
+function ageClassification(num) {
+    return num > 0
+      ? num > 24
+        ? num > 44
+          ? num > 65
+            ? num > 75
+              ? num > 90
+                ? num > 122
+                  ? null
+                  : 'долгожители'
+                : 'старческий возраст'
+              : 'пожилой возраст'
+            : 'средний возраст'
+          : 'молодой возраст'
+        : 'детский возраст'
+      : null;
+  }
+  console.log(ageClassification(34));
+  console.log(ageClassification(133));
+  console.log(ageClassification(1));
+  console.log(ageClassification(0));
 
+
+//   №7
+function oddFn(n) {
+    let arr = [];
+    let i = 0;
+    while (i++ < n) if (i % 2 !== 0) arr.push(i);
+    return arr;
+  }
+  console.log(oddFn(10));
+  console.log(oddFn(15));
+  console.log(oddFn(20));
+
+//   №8
+function mainFunc(a, b, cb) {
+    if (cb && typeof cb === 'function') return cb(a, b);
+    return false;
+}
+function cbRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function cbPow(num, pow) {
+    return Math.pow(num, pow);
+}
+function cbAdd(a, b) {
+    return a + b;
+}
+
+console.log(mainFunc(2, 5, cbRandom));
+console.log(mainFunc(2, 5, cbPow));
+console.log(mainFunc(2, 5, cbAdd)); 
+console.log(mainFunc(2, 5, 'not a func'));
+  
